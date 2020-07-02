@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../styles/regist.css">
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="regist-container">
+        <div class="top">
+            <div class="w990 cl">
+                <span class="favorite"><i></i><a href="javascript:AddFavorite('/','商城')">收藏商城</a></span>
+                <ul class="quick_list">
+                    <li class="loginbar">您好！欢迎来到商城！<a href="/login">[登录]</a>&nbsp;<a href="javascript:regist()">[免费注册]</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- logo -->
+        <div class="logo-container w990">
+            <div id="logo">
+                <a href="/"><img src="../images/login_logo1.png" alt="商城" height="60"></a>
+                <b>欢迎注册</b>
+            </div>
+        </div>
+        <!--  -->
+        <div class="w990" id="regist">
+            <div class="mt">
+                <div class="extra"><span>我已经注册，现在就&nbsp;<a href="/login" class="flk13">登录</a></span></div>
+            </div>
+            <div class="mc">
+                <form id="personRegForm" method="POST" onsubmit="return false;">
+                    <input type="hidden" name="regType" id="regType" value="1">
+                    <input type="hidden" name="uuid" id="uuid" value="9e4da8d0-1b3e-45c7-b3bd-928fd09f3f97">
+                    <input id="ischeckemail" name="ischeckemail" type="hidden" value="0">
+                    <input id="ischecktel" name="ischecktel" type="hidden" value="1">
+
+                    <div class="form">
+
+                        <!-- <div class="item" id="select-regName" style="display:block">
+                            <span class="label">用户名：</span>
+                            <div class="fl item-ifo">
+                                <div class="o-intelligent-regName">
+                                    <input type="text" id="regName" name="regName" class="text" tabindex="1" autocomplete="off" onpaste="return false;" value="用户名" onfocus="if(this.value=='用户名') this.value='';this.style.color='#333'" onblur="if(this.value=='') {this.value='用户名';this.style.color='#999999'}"
+                                        style="color: rgb(51, 51, 51);">
+                                    <i class="i-name"></i>
+                                    <label id="regName_succeed" class="blank"></label>
+                                    <span id="regName_info" class="focus">4-20位字符，支持中英文、数字(非纯数字)及"-"、"_"的组合</span>
+                                    <label id="regName_error" style="display:block;" class="error">请输入用户名</label>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="item" id="select-cellPhone">
+                            <span class="label">手机号码：</span>
+
+                            <div class="fl item-ifo">
+                                <div class="o-intelligent-cellPhone">
+                                    <input type="text" id="cellPhone" name="cellPhone" class="text" tabindex="2" autocomplete="off" onpaste="return false;">
+                                    <i class="i-name"></i>
+                                    <label id="cellPhone_succeed" class="blank"></label>
+                                    <label id="cellPhone_info" class="focus">请输入手机号码</label>
+                                    <label id="cellPhone_error" class="error">请输入手机号码</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div id="o-password">
+                            <div class="item">
+                                <span class="label">请设置密码：</span>
+
+                                <div class="fl item-ifo">
+                                    <div>
+                                        <input type="password" id="pwd" name="pwd" class="text" tabindex="5" style="ime-mode:disabled;" onpaste="return  false" autocomplete="off">
+                                        <i class="i-pass"></i>
+                                        <label id="pwd_succeed" class="blank"></label>
+                                        <label id="pwd_info" class="focus pwd-info"><span>6-20位字符，可使用字母、数字或符号的组合,，不建议使用纯字母、纯数字、纯符号</span></label>
+                                        <label id="pwd_error" class="error"><span>密码长度只能在6-20位字符之间，不包含空格</span></label>
+                                        <span class="clr"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <span class="label">请确认密码：</span>
+
+                                <div class="fl item-ifo">
+                                    <div>
+                                        <input type="password" id="pwdRepeat" name="pwdRepeat" class="text" tabindex="6" onpaste="return  false" autocomplete="off">
+                                        <i class="i-pass"></i>
+                                        <label id="pwdRepeat_succeed" class="blank"></label>
+                                        <label id="pwdRepeat_info" class="focus"><span>请再次输入密码</span></label>
+                                        <label id="pwdRepeat_error" class="error"><span>两次输入密码不一致</span></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item hide" id="syscodeDiv">
+                                <span class="label">手机验证码：</span>
+                                <div class="fl item-ifo" style="width:272px;">
+                                    <div>
+                                        <input type="text" id="syscheckCode" name="syscheckCode" class="text text-1" tabindex="7" autocomplete="off" maxlength="5">
+                                        <a class="getCode" href="javascript:void(0);" onclick="sendMobileCode();" id="sendMobileCode">
+                                            <span id="dyMobileButton">获取验证码</span>
+                                        </a>
+                                        <label id="syscheckCode_error" class="error" style="display:none"><span>请输入获取到的验证码</span></label>
+
+                                    </div>
+                                    <span class="clr"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item item-new">
+                            <span class="label">&nbsp;</span>
+                            <div class="fl item-ifo">
+                                <label><input type="checkbox" class="checkbox" onchange="checkAgreementIsValid()" id="readme">我已阅读并同意《<a
+                href="/Register/RegisterAgreement" target="_blank" style="color:#e3393c"
+                id="protocol">用户注册协议</a>》</label>
+                                <div>
+                                    <label id="checkAgreement_error" class="error" style="display:block"><span>请仔细阅读并同意以上协议</span></label>
+                                </div>
+                                <!-- <span class="clr"></span> -->
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <input type="button" class="btn-regist" value="立即注册">
+                        </div>
+                    </div>
+                    <span class="clr"></span>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

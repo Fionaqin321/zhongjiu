@@ -1,0 +1,106 @@
+.shopcar {
+  width: 988px;
+  border: 1px solid #ddd;
+  margin: 0 auto 20px;
+}
+.shopcar .step {
+  border-top: 1px solid #ddd;
+}
+.shopcar .step .step-title {
+  position: relative;
+  height: 45px;
+  padding: 0 10px;
+  line-height: 45px;
+}
+.shopcar .step .step-title strong {
+  color: #6a7c86;
+}
+.shopcar .step .step-content {
+  padding: 0 44px;
+  color: hsl(202, 10%, 53%);
+}
+.shopcar .step .step-content .sbox {
+  display: block;
+  width: 900px;
+  padding-bottom: 10px;
+}
+.shopcar .step .step-content .sbox .order-review {
+  width: 900px;
+  padding-top: 5px;
+}
+.shopcar .step .step-content .sbox .order-review .title {
+  display: flex;
+  flex-direction: row;
+  width: 900px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #f0f2f5;
+  text-align: center;
+}
+.shopcar .step .step-content .sbox .order-review .title p {
+  flex: 1;
+}
+.shopcar .step .step-content .sbox .order-review .title p.title-1 {
+  flex: 5;
+}
+.shopcar .step .step-content .sbox .order-review ul.pro-list {
+  width: 900px;
+}
+.shopcar .step .step-content .sbox .order-review ul.pro-list > li {
+  width: 900px;
+  height: 72px;
+  margin-top: 10px;
+  border-bottom: solid 1px #ddd;
+  display: flex;
+  flex-direction: row;
+}
+.shopcar .step .step-content .sbox .order-review ul.pro-list > li > div {
+  flex: 1;
+  line-height: 72px;
+  text-align: center;
+}
+.shopcar .step .step-content .sbox .order-review ul.pro-list > li > div.item-left {
+  text-align: left;
+  flex: 5;
+}
+.shopcar .step .step-content .sbox .order-review ul.pro-list > li > div .pro-pic {
+  float: left;
+  width: 50px;
+  height: 50px;
+  border: solid 1px #ddd;
+  margin: 10px;
+}
+.shopcar .step .step-content .sbox .order-review ul.pro-list > li > div .pro-pic img {
+  width: 100%;
+}
+.shopcar .step .step-content .sbox .order-review ul.pro-list > li > div .product {
+  display: flex;
+  padding: 10px;
+}
+.shopcar .step .step-content .sbox .order-review ul.pro-list > li > div .product .text {
+  height: 52px;
+  width: 346px;
+}
+.shopcar .step .step-content .sbox .order-review ul.pro-list > li > div .product .text li {
+  height: 26px;
+  line-height: 26px;
+}
+.shopcar .step .step-content .sbox .order-review ul.pro-list > li > div .product .icon {
+  width: 26px;
+  height: 26px;
+  padding-top: 13px;
+}
+.shopcar .step .step-content .sbox .order-review .total {
+  height: 60px;
+  line-height: 60px;
+  text-align: right;
+}
+.shopcar .step .step-content .sbox .order-review .total em {
+  color: #e3393c;
+  margin: 0 5px;
+  font-size: 16px;
+}
+.shopcar .step .step-content .sbox .order-review .total strong {
+  color: #e3393c;
+  font-size: 18px;
+}

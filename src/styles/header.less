@@ -1,0 +1,109 @@
+.top{
+  width: 100%;
+  height: 31px;
+  line-height: 31px;
+  background-color: #f5f4f4;
+  color: #7f7f7a;
+  border-bottom: solid 1px #e6e6e6;
+  z-index: 900;
+  .wrap{
+    width: 1190px;
+    margin: 0 auto;
+    .top-link {
+      float: left;
+
+      em {
+        color: #3e3a39;
+        padding-left: 5px;
+      }
+      .home{
+        color: red;
+      }
+    }
+
+    .login-regin {
+      width: 200px;
+      float: left;
+      margin-left: 44px;
+      &>li{
+        float: left;
+      }
+    }
+    // 头部右侧
+    .quick_list{
+      float: right;
+      height: 30px;
+      
+      li.dropdown {
+        position: relative;
+        height: 31px;
+        line-height: 31px;
+        padding: 0 8px;
+        margin-right: 10px;
+        float: left;
+        z-index: 12;
+          .outline {
+            position: absolute;
+            left: 3px;
+            top: 3px;
+            background-color:#fff;
+            border: solid 1px #ddd;
+            border-bottom: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+          }
+          .title{
+            .trangle {
+              position: absolute;
+              right: 0px;
+              top: 14px;
+              width: 0px;
+              height: 0px;
+              border-top: 4px solid #666;
+              border-left: 4px solid transparent;
+              border-right: 4px solid transparent;
+              transition: all 0.5s ease 0s;
+            }
+            em{
+              padding: 0 3px;
+            }
+          }
+         
+          .dropdown-menu {
+            position: absolute;
+            top: 30px;
+            left: 3px;
+            display: none;
+            border: solid 1px #ddd;
+            border-top: none;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            li {
+              padding: 0 8px;
+              line-height: 25px;
+              height: 25px;
+              display: block;
+              white-space: nowrap;
+            }
+          }
+
+          &:hover{
+            .outline{
+              z-index: -1;
+              width: 95%;
+              height: 28px;
+            }
+
+            .trangle{
+                transform: rotate(180deg);
+                /*旋转180度 ，-180deg 是逆旋转*/
+            }
+            
+            .dropdown-menu{
+              display: block;
+              z-index: 1;
+            }
+          }
+      }
+    }
+  }
+}

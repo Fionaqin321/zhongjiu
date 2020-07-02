@@ -1,0 +1,97 @@
+.top {
+  width: 100%;
+  height: 31px;
+  line-height: 31px;
+  background-color: #f5f4f4;
+  color: #7f7f7a;
+  border-bottom: solid 1px #e6e6e6;
+  z-index: 900;
+}
+.top .wrap {
+  width: 1190px;
+  margin: 0 auto;
+}
+.top .wrap .top-link {
+  float: left;
+}
+.top .wrap .top-link em {
+  color: #3e3a39;
+  padding-left: 5px;
+}
+.top .wrap .top-link .home {
+  color: red;
+}
+.top .wrap .login-regin {
+  width: 200px;
+  float: left;
+  margin-left: 44px;
+}
+.top .wrap .login-regin > li {
+  float: left;
+}
+.top .wrap .quick_list {
+  float: right;
+  height: 30px;
+}
+.top .wrap .quick_list li.dropdown {
+  position: relative;
+  height: 31px;
+  line-height: 31px;
+  padding: 0 8px;
+  margin-right: 10px;
+  float: left;
+  z-index: 12;
+}
+.top .wrap .quick_list li.dropdown .outline {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  background-color: #fff;
+  border: solid 1px #ddd;
+  border-bottom: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+}
+.top .wrap .quick_list li.dropdown .title .trangle {
+  position: absolute;
+  right: 0px;
+  top: 14px;
+  width: 0px;
+  height: 0px;
+  border-top: 4px solid #666;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  transition: all 0.5s ease 0s;
+}
+.top .wrap .quick_list li.dropdown .title em {
+  padding: 0 3px;
+}
+.top .wrap .quick_list li.dropdown .dropdown-menu {
+  position: absolute;
+  top: 30px;
+  left: 3px;
+  display: none;
+  border: solid 1px #ddd;
+  border-top: none;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+}
+.top .wrap .quick_list li.dropdown .dropdown-menu li {
+  padding: 0 8px;
+  line-height: 25px;
+  height: 25px;
+  display: block;
+  white-space: nowrap;
+}
+.top .wrap .quick_list li.dropdown:hover .outline {
+  z-index: -1;
+  width: 95%;
+  height: 28px;
+}
+.top .wrap .quick_list li.dropdown:hover .trangle {
+  transform: rotate(180deg);
+  /*旋转180度 ，-180deg 是逆旋转*/
+}
+.top .wrap .quick_list li.dropdown:hover .dropdown-menu {
+  display: block;
+  z-index: 1;
+}

@@ -1,0 +1,109 @@
+.search-bar {
+  height: 90px;
+  padding-top: 30px;
+  width: 1190px;
+  margin: 0 auto;
+  position: relative;
+}
+.search-bar .logo {
+  float: left;
+  width: 200px;
+  max-height: 60px;
+  height: 30px;
+}
+.search-bar .logo img {
+  display: inline-block;
+  max-width: 200px;
+  max-height: 60px;
+}
+.search-bar .gif {
+  float: left;
+  left: 10px;
+  width: 60px;
+}
+.search-bar .search {
+  position: relative;
+  right: 250px;
+  float: right;
+  width: 590px;
+  height: 38px;
+}
+.search-bar .search .search-form {
+  margin-bottom: 4px;
+  position: relative;
+  border: 2px solid #dd0207;
+}
+.search-bar .search .search-form ul {
+  position: absolute;
+  left: 0px;
+  width: 55px;
+  background-color: white;
+  line-height: 32px;
+  font-size: 12px;
+  box-shadow: 0 2px 4px #ddd;
+  border: solid 1px #ddd;
+  display: none;
+}
+.search-bar .search .search-form ul li {
+  cursor: pointer;
+  text-indent: 12px;
+}
+.search-bar .search .search-form label {
+  position: absolute;
+  left: 0;
+  width: 55px;
+  text-indent: 12px;
+  font-size: 12px;
+  line-height: 34px;
+  cursor: pointer;
+  color: #484e52;
+  border-left: 1px solid #fcd5db;
+}
+.search-bar .search .search-form .twitter-typeahead {
+  position: absolute;
+  left: 56px;
+  height: 34px;
+}
+.search-bar .search .search-form .twitter-typeahead .text {
+  width: 450px;
+  line-height: 34px;
+  text-indent: 12px;
+  background-color: #fff;
+  color: #333333;
+  font-size: 12px;
+  border-right: 0;
+  border: 0 none;
+}
+.search-bar .search .search-form .button {
+  background: #dd0207;
+  width: 67px;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+  line-height: 34px;
+  letter-spacing: 2px;
+  border-left: 1px solid #f45670;
+  float: right;
+  border: 0 none;
+}
+.search-bar .search .hot-search {
+  height: 20px;
+  margin-top: 5px;
+  color: #999;
+  overflow: hidden;
+}
+.search-bar .search .hot-search a {
+  margin-right: 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.search-bar .search .hot-search a.active {
+  color: red;
+}
+.search-bar .top-head-ad {
+  width: 160px;
+  height: 80px;
+  position: absolute;
+  right: 0;
+  top: 20px;
+}

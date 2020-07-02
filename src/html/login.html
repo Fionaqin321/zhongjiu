@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="../styles/login.css">
+</head>
+
+<body>
+    <div class="login-content">
+        <div class="loginLogo">
+            <a href="javascript:;"><img src="../images/loginLogo.png" alt="中酒网 中酒连锁"></a>
+            <p>欢迎登录</p>
+        </div>
+        <div class="bgloginBanner">
+            <div class="loginBanner" id="entry">
+                <img class="banner" src="../images/loginBanner.png" alt="">
+                <div class="loginNewStyle">
+                    <div class="tab_content">
+                        <ul class="tab_tit">
+                            <li class="active">
+                                <a href="javascript:void(0)" class="sao">扫码登录</a>
+                            </li>
+                            <li class="">
+                                <a href="javascript:void(0)">账户登录</a>
+                            </li>
+                        </ul>
+                        <div class="tab_cont" style="">
+                            <!-- **************** 扫码登录 **************** -->
+                            <section class="hidden">
+                                <div class="saom_login">
+                                    <p><img width="159" height="159" id="scanimg" src="../images/GetQR.gif"></p>
+                                    <span>打开中酒网App</span>
+                                    <span class="fr">扫描二维码</span>
+                                </div>
+                                <span><img src="../images/login_sao_2.png"></span>
+                            </section>
+                            <!-- *************** 账户登录 ***************** -->
+
+                            <section class="">
+                                <div class="loginFrame">
+
+                                    <div class="tips_error"><img src="../images/login_icon-msg.png" alt="" style="margin-right: 24px;"><span id="checkCode_error"></span></div>
+
+                                    <div class="loginMethodByCode" style="display: block;">
+                                        <div class="inputBox">
+                                            <div class="iconBox">
+                                                <img width="16" src="../images/login_icon-user.png" alt="">
+                                            </div>
+                                            <input id="loginname" type="text" name="loginname" placeholder="请输入用户名" tabindex="1" autocomplete="off" sta="2" value="">
+                                        </div>
+                                        <div class="inputBox">
+                                            <div class="iconBox">
+                                                <img width="16" src="../images/login_icon-lock.png" alt="">
+                                            </div>
+                                            <input id="password" type="password" name="password" placeholder="请输入密码" tabindex="2" autocomplete="off" sta="2">
+                                        </div>
+                                        <div id="loginsubmit" class="btn-enter">登录</div>
+                                    </div>
+                                    <div class="tipsText">
+                                        <p class="toggleLoginBtn" style="cursor:pointer" data-status="1">短信验证码登录</p>
+                                        <a href="javascript:void(0)">忘记密码</a>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="registerNow">
+                            <a href="javascript:void(0)">
+                                <img width="16" src="../images/icon-weibo.png" alt="微博">
+                                <span>微博</span>
+                            </a>
+                            <span> | </span>
+                            <a href="javascript:void(0)">
+                                <img width="16" src="../images/icon-weixin.png" alt="微信">
+                                <span>微信</span>
+                            </a>
+                            <span> | </span>
+                            <a href="Register" target="_blank">立即注册</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
