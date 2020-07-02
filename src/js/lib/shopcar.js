@@ -17,14 +17,14 @@ define(['jquery', 'cookie'], function($, cookie) {
                     },
                     dataType: "json",
                     success: function(res) {
-                        // console.log(res);
+                        // 渲染页面
                         let temp = '';
                         res.forEach(elm => {
                             // 查找出cookie里面商品id 
                             let arr = shop.filter(item => item.id === elm.id);
                             // console.log(arr);
-                            temp += `<li class="item">
-                            <input type="checkbox" style="margin-top: 26px;">
+                            temp += `<li class="item" data-id="${elm.id}">
+                            <input type="checkbox" class="checkBox" style="margin-top: 26px;">
                                 <div class="item-left">
                                   <div class="pro-pic">
                                     <img src="${JSON.parse(elm.pic)[0]}"
@@ -47,7 +47,9 @@ define(['jquery', 'cookie'], function($, cookie) {
                               </li>`
                         });
                         $('.pro-list').append(temp);
+
                         // 采用事件委托为未来元素绑定事件
+                        // 删除
                         $('.pro-list').on('click', '.btn-delete', function() {
                             // console.log(this);
                             let shop = JSON.parse(cookie.get('shop'));
@@ -61,6 +63,32 @@ define(['jquery', 'cookie'], function($, cookie) {
                                     location.reload();
                                 }
                             });
+                        });
+
+
+                        // checkbox
+                        $('.pro-list').on('click', '.checkBox', function() {
+                            let shop = JSON.parse(cookie.get('shop'));
+                            // console.log($(this).is(':checked'));
+                            // console.log(this.dataset.id);
+                            // 获取ul中所有被选中的checkbox
+                            let oCheckBox = $('.pro-list input[type = "checkbox"]:checked');
+
+                            let arr = [];
+                            oCheckBox.map(elm => {
+                                let curIndex = oCheckBox.parent()[0].dataset.id; //当前商品的ID
+                                shop.forEach(item => {
+                                    let curIndex = oCheckBox.parent()[0].dataset.id; //当前商品的ID
+                                    if (item.id = curIndex) {
+                                        console.log(item);
+                                        arr.push({
+                                            count: item.num,
+                                            price: item.price
+                                        })
+                                    }
+                                });
+                            })
+                            console.log(arr);
                         });
                     }
                 });
