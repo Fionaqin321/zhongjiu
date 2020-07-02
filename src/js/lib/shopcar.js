@@ -7,7 +7,6 @@ define(['jquery', 'cookie'], function($, cookie) {
             let shop = cookie.get('shop');
             if (shop) {
                 shop = JSON.parse(shop);
-                console.log(shop);
 
                 let idList = shop.map(elm => elm.id).join();
                 $.ajax({
@@ -18,13 +17,14 @@ define(['jquery', 'cookie'], function($, cookie) {
                     },
                     dataType: "json",
                     success: function(res) {
-                        console.log(res);
+                        // console.log(res);
                         let temp = '';
                         res.forEach(elm => {
                             // 查找出cookie里面商品id 
                             let arr = shop.filter(item => item.id === elm.id);
-                            console.log(arr);
+                            // console.log(arr);
                             temp += `<li class="item">
+                            <input type="checkbox" style="margin-top: 26px;">
                                 <div class="item-left">
                                   <div class="pro-pic">
                                     <img src="${JSON.parse(elm.pic)[0]}"
@@ -43,10 +43,25 @@ define(['jquery', 'cookie'], function($, cookie) {
                                 
                                 <div>￥${elm.price}</div>
                                 <div>x ${arr[0].num}</div>
-                                <div>￥${(elm.price*arr[0].num).toFixed(2)}</div>
+                                <div> <input type = "button" value = "删除" class="btn-delete" data-id="${elm.id}"> </div>
                               </li>`
                         });
                         $('.pro-list').append(temp);
+                        // 采用事件委托为未来元素绑定事件
+                        $('.pro-list').on('click', '.btn-delete', function() {
+                            // console.log(this);
+                            let shop = JSON.parse(cookie.get('shop'));
+                            let id = this.dataset.id;
+
+                            shop.forEach((elm, index) => {
+                                if (elm.id === id) {
+                                    shop.splice(index, 1);
+                                    let result = JSON.stringify(shop);
+                                    cookie.set('shop', result, 7);
+                                    location.reload();
+                                }
+                            });
+                        });
                     }
                 });
             }
