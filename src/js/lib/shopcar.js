@@ -20,9 +20,9 @@ define(['jquery', 'cookie'], function($, cookie) {
                         // 渲染页面
                         let temp = '';
                         res.forEach(elm => {
+                            console.log(elm.id);
                             // 查找出cookie里面商品id 
                             let arr = shop.filter(item => item.id === elm.id);
-                            // console.log(arr);
                             temp += `<li class="item" data-id="${elm.id}">
                             <input type="checkbox" class="checkBox" style="margin-top: 26px;">
                                 <div class="item-left">
@@ -69,26 +69,16 @@ define(['jquery', 'cookie'], function($, cookie) {
                         // checkbox
                         $('.pro-list').on('click', '.checkBox', function() {
                             let shop = JSON.parse(cookie.get('shop'));
-                            // console.log($(this).is(':checked'));
-                            // console.log(this.dataset.id);
-                            // 获取ul中所有被选中的checkbox
-                            let oCheckBox = $('.pro-list input[type = "checkbox"]:checked');
+                            let oCheckBox = $('.pro-list input[type = "checkbox"]:checked'); // 获取ul中所有被选中的checkbox
 
-                            let arr = [];
+                            console.log(oCheckBox.parent()[0]);
+                            let curIndex = oCheckBox.parent()[0].dataset.id; //当前点击的商品的ID
+                            // console.log(curIndex);
                             oCheckBox.map(elm => {
-                                let curIndex = oCheckBox.parent()[0].dataset.id; //当前商品的ID
                                 shop.forEach(item => {
-                                    let curIndex = oCheckBox.parent()[0].dataset.id; //当前商品的ID
-                                    if (item.id = curIndex) {
-                                        console.log(item);
-                                        arr.push({
-                                            count: item.num,
-                                            price: item.price
-                                        })
-                                    }
+                                    if (item.id = curIndex) {}
                                 });
                             })
-                            console.log(arr);
                         });
                     }
                 });
