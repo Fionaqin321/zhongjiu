@@ -20,11 +20,10 @@ define(['jquery', 'cookie'], function($, cookie) {
                         // 渲染页面
                         let temp = '';
                         res.forEach(elm => {
-                            console.log(elm.id);
                             // 查找出cookie里面商品id 
                             let arr = shop.filter(item => item.id === elm.id);
-                            temp += `<li class="item" data-id="${elm.id}">
-                            <input type="checkbox" class="checkBox" style="margin-top: 26px;">
+                            temp += `<li class="item">
+                            <input type="checkbox" class="checkBox" style="margin-top: 26px;" data-id="${elm.id}">
                                 <div class="item-left">
                                   <div class="pro-pic">
                                     <img src="${JSON.parse(elm.pic)[0]}"
@@ -67,18 +66,20 @@ define(['jquery', 'cookie'], function($, cookie) {
 
 
                         // checkbox
+                        // let oCheckBox = $('.pro-list input[type = "checkbox"]:checked'); // 获取ul中所有被选中的checkbox
+                        let sum = 0,
+                            total = 0;
+                        let idArr = [];
                         $('.pro-list').on('click', '.checkBox', function() {
-                            let shop = JSON.parse(cookie.get('shop'));
+                            let currentId = this.dataset.id; //当前点击的商品的ID
                             let oCheckBox = $('.pro-list input[type = "checkbox"]:checked'); // 获取ul中所有被选中的checkbox
 
-                            console.log(oCheckBox.parent()[0]);
-                            let curIndex = oCheckBox.parent()[0].dataset.id; //当前点击的商品的ID
-                            // console.log(curIndex);
-                            oCheckBox.map(elm => {
-                                shop.forEach(item => {
-                                    if (item.id = curIndex) {}
-                                });
-                            })
+                            oCheckBox.each((index, item) => {
+                                console.log(item);
+                                let currentLi = $(item).parent();
+                                console.log(currentLi);
+
+                            });
                         });
                     }
                 });

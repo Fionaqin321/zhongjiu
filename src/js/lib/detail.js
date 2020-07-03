@@ -164,6 +164,10 @@ define(['jquery', 'cookie'], function($, cookie) {
                     $('#product-intro').append(temp_name);
                     $('#product-intro').append(temp_productDesc);
 
+                    $('.btn-add').on('click', function() {
+                        console.log('add')
+                    })
+
                     callback && callback(res.id, res.price);
                 }
             });
