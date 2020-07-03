@@ -25,8 +25,15 @@
       width: 200px;
       float: left;
       margin-left: 44px;
-      &>li{
+      >li{
         float: left;
+        &.L-line{
+          &::after{
+            content: "|";
+            padding: 0 11px;
+            color: red;
+          }
+        }
       }
     }
     // 头部右侧

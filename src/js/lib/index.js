@@ -7,7 +7,7 @@ let len = $('.scroll-A').length; // div的个数
 let curIndex = 0;
 $('.scroll-wrap').append($('.scroll-brand').first().clone()); // 克隆第一个div 并追加到容器的尾部
 let len2 = $('.scroll-brand').length;
-console.log(len2);
+// console.log(len2);
 
 
 define(['jquery'], function($) {
@@ -89,7 +89,7 @@ define(['jquery'], function($) {
                 url: `${baseUrl}/interface/getall.php`,
                 dataType: "json",
                 success: function(res) {
-                    console.log(res);
+                    // console.log(res);
                     let temL = '';
                     res.forEach(elm => {
                         temL += `<li>

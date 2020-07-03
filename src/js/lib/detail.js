@@ -181,23 +181,52 @@ define(['jquery', 'cookie'], function($, cookie) {
                     })
 
                     $('.smallpic').hover(function() {
-                            $('.big').addClass('show');
-                            $('.movebox').addClass('show');
-                            // 计算movebox的宽高
-                            let _width = ($(this).width() * $('.big').width() / $('.bigpic').width());
-                            let _height = ($(this).height() * $('.big').height() / $('.bigpic').height());
-                            console.log(_width, _height);
-                            $('.movebox').css({
-                                width: _width,
-                                height: _height
+                                $('.big').addClass('show');
+                                $('.movebox').addClass('show');
+                                // 计算movebox的宽高
+                                let _width = ($(this).width() * $('.big').width() / $('.bigpic').width());
+                                let _height = ($(this).height() * $('.big').height() / $('.bigpic').height());
+                                console.log(_width, _height);
+                                $('.movebox').css({
+                                    width: _width,
+                                    height: _height
+                                })
+                            },
+                            function() {
+                                $('.big').removeClass('show');
+                                $('.movebox').removeClass('show');
+
                             })
-
-                        },
-                        function() {
-                            $('.big').removeClass('show');
-                            $('.movebox').removeClass('show');
-
+                        // 2.让滤镜跟随鼠标移动
+                    $('.movebox').on('mousemove', function(ev) {
+                        console.log($('.smallpic').offset());
+                        // console.log('222222');
+                        let x = ev.pageX - $('.smallpic').offset().left - $('.movebox').width() / 2;
+                        let y = ev.pageY - $('.smallpic').offset().top - $('.movebox').height() / 2;
+                        // 3.设置移动边界
+                        if (x < 0) {
+                            x = 0
+                        } else if (x > $('.smallpic').width() - $('.movebox').width()) {
+                            x = $('.smallpic').width() - $('.movebox').width();
+                        }
+                        if (y < 0) {
+                            y = 0
+                        } else if (y > $('.smallpic').height() - $('.movebox').height()) {
+                            y = $('.smallpic').height() - $('.movebox').height();
+                        }
+                        // 4.计算比例
+                        let ratio = $('.bigpic').width() / $('.smallpic').width();
+                        $('.movebox').css({
+                            left: x,
+                            top: y
                         })
+                        $('.bigpic').css({
+                            left: -x * ratio + 'px',
+                            top: -y * ratio + 'px'
+                        })
+                    })
+
+
 
                     callback && callback(res.id, res.price);
                 }

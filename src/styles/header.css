@@ -29,6 +29,11 @@
 .top .wrap .login-regin > li {
   float: left;
 }
+.top .wrap .login-regin > li.L-line::after {
+  content: "|";
+  padding: 0 11px;
+  color: red;
+}
 .top .wrap .quick_list {
   float: right;
   height: 30px;

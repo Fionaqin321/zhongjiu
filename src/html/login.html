@@ -7,6 +7,7 @@
     <title>登录页面</title>
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="../styles/login.css">
+    <script src="../../node_modules/requirejs/require.js" data-main="../js/main.login"></script>
 </head>
 
 <body>
@@ -43,7 +44,10 @@
                             <section class="">
                                 <div class="loginFrame">
 
-                                    <div class="tips_error"><img src="../images/login_icon-msg.png" alt="" style="margin-right: 24px;"><span id="checkCode_error"></span></div>
+                                    <div class="tips_error">
+                                        <img src="../images/login_icon-msg.png" alt="">
+                                        <span id="checkCode_error"></span>
+                                    </div>
 
                                     <div class="loginMethodByCode" style="display: block;">
                                         <div class="inputBox">
