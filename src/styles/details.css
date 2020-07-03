@@ -49,6 +49,10 @@
   position: absolute;
   top: 0px;
   left: 0px;
+  display: none;
+}
+.bg-g .wrap1190 #product-intro #preview .jqzoom .smallpic .movebox.show {
+  display: block;
 }
 .bg-g .wrap1190 #product-intro #preview #spec-list {
   position: relative;
@@ -96,6 +100,10 @@
   float: left;
   overflow: hidden;
   position: relative;
+  display: none;
+}
+.bg-g .wrap1190 #product-intro .big.show {
+  display: block;
 }
 .bg-g .wrap1190 #product-intro .big .bigpic {
   position: absolute;

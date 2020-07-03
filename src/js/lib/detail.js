@@ -55,7 +55,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                     </span>
                 </div>`;
 
-                    temp_big = `<div class="big" style="display: none;">
+                    temp_big = `<div class="big">
                     <img src="../images/zoom1.png" alt="" class="bigpic">
                 </div>`;
 
@@ -164,9 +164,40 @@ define(['jquery', 'cookie'], function($, cookie) {
                     $('#product-intro').append(temp_name);
                     $('#product-intro').append(temp_productDesc);
 
+                    let num = $('.quantity-text').val();
                     $('.btn-add').on('click', function() {
-                        console.log('add')
+                        num++;
+                        if (num >= res.num) {
+                            num = res.num;
+                        }
+                        $('.quantity-text').val(num);
                     })
+                    $('.btn-reduce').on('click', function() {
+                        num--;
+                        if (num <= 1) {
+                            num = 1;
+                        }
+                        $('.quantity-text').val(num);
+                    })
+
+                    $('.smallpic').hover(function() {
+                            $('.big').addClass('show');
+                            $('.movebox').addClass('show');
+                            // 计算movebox的宽高
+                            let _width = ($(this).width() * $('.big').width() / $('.bigpic').width());
+                            let _height = ($(this).height() * $('.big').height() / $('.bigpic').height());
+                            console.log(_width, _height);
+                            $('.movebox').css({
+                                width: _width,
+                                height: _height
+                            })
+
+                        },
+                        function() {
+                            $('.big').removeClass('show');
+                            $('.movebox').removeClass('show');
+
+                        })
 
                     callback && callback(res.id, res.price);
                 }

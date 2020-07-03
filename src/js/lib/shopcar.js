@@ -66,13 +66,6 @@ define(['jquery', 'cookie'], function($, cookie) {
                             });
                         });
 
-
-                        function select() {
-
-                        };
-
-                        select();
-
                         // checkbox的操作
                         $('.pro-list').on('click', '.checkBox', function() {
                             let oCheckBox = $('.pro-list input[type = "checkbox"]:checked'); // 获取ul中所有被选中的checkbox
@@ -94,10 +87,10 @@ define(['jquery', 'cookie'], function($, cookie) {
 
                         // 全选
                         $('.selectAll>.checkbox').on('click', function() {
-                            let _checked = $(this).is(':checked');
+                            let _checked = $(this).is(':checked'); // 全选按钮的选中状态
                             $('.pro-list>li input[type="checkbox"]').attr('checked', _checked);
-                            totalNum = 0,
-                                total = 0;
+                            totalNum = 0;
+                            total = 0;
                             if (_checked) {
                                 $('.pro-list>li').each((index, item) => {
                                     totalNum += Number($(item).find('.num>span').text());
