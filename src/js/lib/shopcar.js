@@ -1,4 +1,6 @@
 let baseUrl = 'http://localhost/zhongjiu';
+let totalNum = 0; // 商品总件数
+let total = 0; // 商品总价 
 
 define(['jquery', 'cookie'], function($, cookie) {
     return {
@@ -40,8 +42,8 @@ define(['jquery', 'cookie'], function($, cookie) {
                                   </div>
                                 </div>
                                 
-                                <div>￥${elm.price}</div>
-                                <div>x ${arr[0].num}</div>
+                                <div class="price">￥<span>${elm.price}<span></div>
+                                <div class="num" >x <span>${arr[0].num}<span></div>
                                 <div> <input type = "button" value = "删除" class="btn-delete" data-id="${elm.id}"> </div>
                               </li>`
                         });
@@ -65,21 +67,45 @@ define(['jquery', 'cookie'], function($, cookie) {
                         });
 
 
-                        // checkbox
-                        // let oCheckBox = $('.pro-list input[type = "checkbox"]:checked'); // 获取ul中所有被选中的checkbox
-                        let sum = 0,
-                            total = 0;
-                        let idArr = [];
+                        function select() {
+
+                        };
+
+                        select();
+
+                        // checkbox的操作
                         $('.pro-list').on('click', '.checkBox', function() {
-                            let currentId = this.dataset.id; //当前点击的商品的ID
                             let oCheckBox = $('.pro-list input[type = "checkbox"]:checked'); // 获取ul中所有被选中的checkbox
+                            let checkedLi = []; // 存放ul中所有被选中的li
 
                             oCheckBox.each((index, item) => {
-                                console.log(item);
-                                let currentLi = $(item).parent();
-                                console.log(currentLi);
-
+                                checkedLi = [];
+                                checkedLi.push($(item).parent());
                             });
+                            console.log(checkedLi); //获取ul中所有被选中的li
+                            checkedLi.forEach((item, index) => {
+                                    totalNum += Number(item.find('.num>span').text());
+                                    total += (Number(item.find('.num>span').text()) * Number(item.find('.price>span').text()));
+                                })
+                                // console.log(totalNum, total.toFixed(2));
+                            $('.totalNum').html(totalNum);
+                            $('.totalCount').text(total.toFixed(2));
+                        });
+
+                        // 全选
+                        $('.selectAll>.checkbox').on('click', function() {
+                            let _checked = $(this).is(':checked');
+                            $('.pro-list>li input[type="checkbox"]').attr('checked', _checked);
+                            totalNum = 0,
+                                total = 0;
+                            if (_checked) {
+                                $('.pro-list>li').each((index, item) => {
+                                    totalNum += Number($(item).find('.num>span').text());
+                                    total += Number($(item).find('.num>span').text()) * Number($(item).find('.price>span').text());
+                                });
+                            }
+                            $('.totalNum').html(totalNum);
+                            $('.totalCount').text(total.toFixed(2));
                         });
                     }
                 });

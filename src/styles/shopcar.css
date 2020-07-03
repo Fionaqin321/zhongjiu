@@ -93,14 +93,22 @@
 .shopcar .step .step-content .sbox .order-review .total {
   height: 60px;
   line-height: 60px;
+  display: flex;
+  flex-direction: row;
+}
+.shopcar .step .step-content .sbox .order-review .total .selectAll {
+  flex: 2;
+}
+.shopcar .step .step-content .sbox .order-review .total .total-right {
+  flex: 6;
   text-align: right;
 }
-.shopcar .step .step-content .sbox .order-review .total em {
+.shopcar .step .step-content .sbox .order-review .total .total-right em {
   color: #e3393c;
   margin: 0 5px;
   font-size: 16px;
 }
-.shopcar .step .step-content .sbox .order-review .total strong {
+.shopcar .step .step-content .sbox .order-review .total .total-right strong {
   color: #e3393c;
   font-size: 18px;
 }

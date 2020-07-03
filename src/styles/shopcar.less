@@ -89,15 +89,24 @@
                   .total{
                     height: 60px;
                     line-height: 60px;
-                    text-align: right;
-                    em{
-                      color: #e3393c;
-                      margin: 0 5px;
-                      font-size: 16px;
+                    display: flex;
+                    flex-direction: row;
+                    .selectAll{
+                      flex: 2;
                     }
-                    strong{
-                      color: #e3393c;
-                      font-size: 18px;
+                    .total-right {
+                      flex: 6;
+                      text-align: right;
+                      em {
+                        color: #e3393c;
+                        margin: 0 5px;
+                        font-size: 16px;
+                      }
+
+                      strong {
+                        color: #e3393c;
+                        font-size: 18px;
+                      }
                     }
                   }
                 }
