@@ -98,7 +98,7 @@
       padding-bottom: 20px;
       border: solid 1px #ddd;
       border-top: none;
-      #personRegForm{
+      // #personRegForm{
         .form{
           width: 900px;
           margin: 30px auto;
@@ -163,6 +163,7 @@
                   margin-left: 10px;
                   text-align: center;
                 }
+                // 图标
                 .blank {
                    display: inline-block;
                    width: 16px;
@@ -173,7 +174,7 @@
                    padding: 3px;
                   //  background-color: red;
                 }
-                .focus{
+                .info {
                   position: absolute;
                   top: 0;
                   right: -275px;
@@ -182,15 +183,20 @@
                   width: 260px;
                   height: 36px;
                   line-height: 36px;
-                  color: #666;
-                  background-color: #f7f7f7;
-                  border: solid 1px #ddd;
+                  color: #e3393c;
+                  background-color: #ffebeb;
+                  border: solid 1px #ffbdbe;
+                  display: none;
+
+                  &.show{
+                    display: block;
+                  }
                   &.pwd-info{
                     line-height: 18px;
                   }
                 }
 
-                .error {
+                .success {
                   position: absolute;
                   top: 0;
                   right: -275px;
@@ -198,10 +204,13 @@
                   display: none;
                   width: 260px;
                   height: 36px;
-                  color: #e3393c;
-                  background-color: #ffebeb;
-                  border: solid 1px #ffbdbe;
+                  color: rgb(196,220,176);
+                  // border: solid 1px rgb(196, 220, 176);
                   line-height: 36px;
+                  display: none;
+                  &.show{
+                    display: block;
+                  }
                 }
                 
               }
@@ -223,7 +232,7 @@
 
           }
         }
-      }
+      // }
     }
   }
 }

@@ -86,17 +86,17 @@
   border: solid 1px #ddd;
   border-top: none;
 }
-.regist-container #regist .mc #personRegForm .form {
+.regist-container #regist .mc .form {
   width: 900px;
   margin: 30px auto;
 }
-.regist-container #regist .mc #personRegForm .form .item {
+.regist-container #regist .mc .form .item {
   position: relative;
   padding-top: 9px;
   height: 60px;
   line-height: 34px;
 }
-.regist-container #regist .mc #personRegForm .form .item .label {
+.regist-container #regist .mc .form .item .label {
   float: left;
   padding-right: 10px;
   width: 190px;
@@ -104,18 +104,18 @@
   text-align: right;
   color: #999;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo {
+.regist-container #regist .mc .form .item .item-ifo {
   width: 270px;
   position: relative;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo .checkbox {
+.regist-container #regist .mc .form .item .item-ifo .checkbox {
   margin: 10px 3px 3px;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div {
+.regist-container #regist .mc .form .item .item-ifo > div {
   width: 270px;
   height: 38px;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div input {
+.regist-container #regist .mc .form .item .item-ifo > div input {
   width: 238px;
   height: 16px;
   padding: 10px 25px 10px 5px;
@@ -123,11 +123,11 @@
   font-size: 14px;
   color: #999;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div input.text-1 {
+.regist-container #regist .mc .form .item .item-ifo > div input.text-1 {
   width: 100px;
   float: left;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div i {
+.regist-container #regist .mc .form .item .item-ifo > div i {
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -137,14 +137,14 @@
   background-image: url('../images/login-all-bg.png');
   background-repeat: no-repeat;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div i.i-name {
+.regist-container #regist .mc .form .item .item-ifo > div i.i-name {
   background-position: -373px -111px;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div i.i-pass {
+.regist-container #regist .mc .form .item .item-ifo > div i.i-pass {
   background-position: -346px -108px;
   height: 21px;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div a.getCode {
+.regist-container #regist .mc .form .item .item-ifo > div a.getCode {
   display: inline-block;
   width: 106px;
   height: 36px;
@@ -154,7 +154,7 @@
   margin-left: 10px;
   text-align: center;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div .blank {
+.regist-container #regist .mc .form .item .item-ifo > div .blank {
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -163,7 +163,7 @@
   top: 9px;
   padding: 3px;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div .focus {
+.regist-container #regist .mc .form .item .item-ifo > div .info {
   position: absolute;
   top: 0;
   right: -275px;
@@ -172,30 +172,35 @@
   width: 260px;
   height: 36px;
   line-height: 36px;
-  color: #666;
-  background-color: #f7f7f7;
-  border: solid 1px #ddd;
+  color: #e3393c;
+  background-color: #ffebeb;
+  border: solid 1px #ffbdbe;
+  display: none;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div .focus.pwd-info {
+.regist-container #regist .mc .form .item .item-ifo > div .info.show {
+  display: block;
+}
+.regist-container #regist .mc .form .item .item-ifo > div .info.pwd-info {
   line-height: 18px;
 }
-.regist-container #regist .mc #personRegForm .form .item .item-ifo > div .error {
+.regist-container #regist .mc .form .item .item-ifo > div .success {
   position: absolute;
   top: 0;
   right: -275px;
   padding: 0 5px;
-  display: none;
   width: 260px;
   height: 36px;
-  color: #e3393c;
-  background-color: #ffebeb;
-  border: solid 1px #ffbdbe;
+  color: #c4dcb0;
   line-height: 36px;
+  display: none;
 }
-.regist-container #regist .mc #personRegForm .form .btn {
+.regist-container #regist .mc .form .item .item-ifo > div .success.show {
+  display: block;
+}
+.regist-container #regist .mc .form .btn {
   width: 900px;
 }
-.regist-container #regist .mc #personRegForm .form .btn .btn-regist {
+.regist-container #regist .mc .form .btn .btn-regist {
   margin-left: 315px;
   width: 270px;
   height: 36px;
