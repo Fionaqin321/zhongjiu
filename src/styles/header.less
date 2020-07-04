@@ -22,11 +22,18 @@
     }
 
     .login-regin {
-      width: 200px;
+      width: 300px;
       float: left;
       margin-left: 44px;
       >li{
         float: left;
+        display: none;
+        &.show{
+          display: block;
+        }
+        // &:first-child{
+        //   display: block;
+        // }
         &.L-line{
           &::after{
             content: "|";

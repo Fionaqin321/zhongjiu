@@ -10,7 +10,7 @@ let len2 = $('.scroll-brand').length;
 // console.log(len2);
 
 
-define(['jquery'], function($) {
+define(['jquery', 'cookie'], function($, cookie) {
     return {
         tab: function() {
             $('.tabs1>li').hover(function() {
@@ -84,6 +84,20 @@ define(['jquery'], function($) {
 
 
         render: function() {
+            let loginObj = JSON.parse(cookie.get('login')); //从cookie中获取登录状态
+            // console.log(loginObj && loginObj.isLogin);
+            // 登录之后实现首页头部信息联动
+            if (loginObj && loginObj.isLogin) {
+                $('.login-regin>li').first().addClass('show').siblings().removeClass('show');
+                $('.login-regin>li').first().children('.userName').text(loginObj.userName);
+            }
+            // 退出登录
+            $('.log_out').on('click', function() {
+                // 清空cookie里存的登录状态
+                cookie.remove('login', '', -1);
+                $('.login-regin>li').first().removeClass('show').siblings().addClass('show');
+            })
+
             $.ajax({
                 type: "get",
                 url: `${baseUrl}/interface/getall.php`,

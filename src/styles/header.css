@@ -22,12 +22,16 @@
   color: red;
 }
 .top .wrap .login-regin {
-  width: 200px;
+  width: 300px;
   float: left;
   margin-left: 44px;
 }
 .top .wrap .login-regin > li {
   float: left;
+  display: none;
+}
+.top .wrap .login-regin > li.show {
+  display: block;
 }
 .top .wrap .login-regin > li.L-line::after {
   content: "|";

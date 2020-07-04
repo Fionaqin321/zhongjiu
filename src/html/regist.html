@@ -7,6 +7,7 @@
     <title>注册页面</title>
     <link rel="stylesheet" href="../common.css">
     <link rel="stylesheet" href="../styles/regist.css">
+    <script src="../../node_modules/requirejs/require.js" data-main="../js/main.regist"></script>
 </head>
 
 <body>
@@ -40,12 +41,13 @@
                     <input id="ischecktel" name="ischecktel" type="hidden" value="1">
 
                     <div class="form">
-
-                        <!-- <div class="item" id="select-regName" style="display:block">
+                        <!-- *******用户名************ -->
+                        <div class="item" id="select-regName" style="display:block">
                             <span class="label">用户名：</span>
+
                             <div class="fl item-ifo">
                                 <div class="o-intelligent-regName">
-                                    <input type="text" id="regName" name="regName" class="text" tabindex="1" autocomplete="off" onpaste="return false;" value="用户名" onfocus="if(this.value=='用户名') this.value='';this.style.color='#333'" onblur="if(this.value=='') {this.value='用户名';this.style.color='#999999'}"
+                                    <input type="text" id="regName" name="regName" class="text regTest" tabindex="1" autocomplete="off" onpaste="return false;" value="用户名" onfocus="if(this.value=='用户名') this.value='';this.style.color='#333'" onblur="if(this.value=='') {this.value='用户名';this.style.color='#999999'}"
                                         style="color: rgb(51, 51, 51);">
                                     <i class="i-name"></i>
                                     <label id="regName_succeed" class="blank"></label>
@@ -53,14 +55,14 @@
                                     <label id="regName_error" style="display:block;" class="error">请输入用户名</label>
                                 </div>
                             </div>
-                        </div> -->
-
+                        </div>
+                        <!-- *******手机号码************ -->
                         <div class="item" id="select-cellPhone">
                             <span class="label">手机号码：</span>
 
                             <div class="fl item-ifo">
                                 <div class="o-intelligent-cellPhone">
-                                    <input type="text" id="cellPhone" name="cellPhone" class="text" tabindex="2" autocomplete="off" onpaste="return false;">
+                                    <input type="text" id="cellPhone" name="cellPhone" class="text regTest" tabindex="2" autocomplete="off" onpaste="return false;">
                                     <i class="i-name"></i>
                                     <label id="cellPhone_succeed" class="blank"></label>
                                     <label id="cellPhone_info" class="focus">请输入手机号码</label>
@@ -70,14 +72,14 @@
                         </div>
 
 
-
                         <div id="o-password">
+                            <!-- *******密码************ -->
                             <div class="item">
                                 <span class="label">请设置密码：</span>
 
                                 <div class="fl item-ifo">
                                     <div>
-                                        <input type="password" id="pwd" name="pwd" class="text" tabindex="5" style="ime-mode:disabled;" onpaste="return  false" autocomplete="off">
+                                        <input type="password" id="pwd" name="pwd" class="text regTest" tabindex="5" style="ime-mode:disabled;" onpaste="return  false" autocomplete="off">
                                         <i class="i-pass"></i>
                                         <label id="pwd_succeed" class="blank"></label>
                                         <label id="pwd_info" class="focus pwd-info"><span>6-20位字符，可使用字母、数字或符号的组合,，不建议使用纯字母、纯数字、纯符号</span></label>
@@ -86,7 +88,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <!-- *******确认密码************ -->
                             <div class="item">
                                 <span class="label">请确认密码：</span>
 
@@ -100,7 +102,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <!-- ***********验证码************* -->
                             <div class="item hide" id="syscodeDiv">
                                 <span class="label">手机验证码：</span>
                                 <div class="fl item-ifo" style="width:272px;">
@@ -116,11 +118,12 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- *******用户协议******** -->
                         <div class="item item-new">
                             <span class="label">&nbsp;</span>
                             <div class="fl item-ifo">
-                                <label><input type="checkbox" class="checkbox" onchange="checkAgreementIsValid()" id="readme">我已阅读并同意《<a
-                href="/Register/RegisterAgreement" target="_blank" style="color:#e3393c"
+                                <label><input type="checkbox" class="checkbox" id="readme">我已阅读并同意《<a
+                href="javascript:;" target="_blank" style="color:#e3393c"
                 id="protocol">用户注册协议</a>》</label>
                                 <div>
                                     <label id="checkAgreement_error" class="error" style="display:block"><span>请仔细阅读并同意以上协议</span></label>
