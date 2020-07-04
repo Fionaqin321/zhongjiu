@@ -164,6 +164,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                     $('#product-intro').append(temp_name);
                     $('#product-intro').append(temp_productDesc);
 
+                    // 数量加减
                     let num = $('.quantity-text').val();
                     $('.btn-add').on('click', function() {
                         num++;
@@ -180,13 +181,14 @@ define(['jquery', 'cookie'], function($, cookie) {
                         $('.quantity-text').val(num);
                     })
 
+                    // 放大镜
+                    // 1.计算并设置movebox的宽高
+                    let _width = $('.smallpic').width() * $('.big').width() / $('.bigpic').width();
+                    let _height = $('.smallpic').height() * $('.big').height() / $('.bigpic').height();
                     $('.smallpic').hover(function() {
+                                // console.log(_width, _height);
                                 $('.big').addClass('show');
                                 $('.movebox').addClass('show');
-                                // 计算movebox的宽高
-                                let _width = ($(this).width() * $('.big').width() / $('.bigpic').width());
-                                let _height = ($(this).height() * $('.big').height() / $('.bigpic').height());
-                                console.log(_width, _height);
                                 $('.movebox').css({
                                     width: _width,
                                     height: _height
@@ -194,13 +196,11 @@ define(['jquery', 'cookie'], function($, cookie) {
                             },
                             function() {
                                 $('.big').removeClass('show');
-                                $('.movebox').removeClass('show');
-
+                                // $('.movebox').removeClass('show');
                             })
                         // 2.让滤镜跟随鼠标移动
                     $('.movebox').on('mousemove', function(ev) {
-                        console.log($('.smallpic').offset());
-                        // console.log('222222');
+                        // console.log($('.smallpic').offset());
                         let x = ev.pageX - $('.smallpic').offset().left - $('.movebox').width() / 2;
                         let y = ev.pageY - $('.smallpic').offset().top - $('.movebox').height() / 2;
                         // 3.设置移动边界
@@ -225,9 +225,6 @@ define(['jquery', 'cookie'], function($, cookie) {
                             top: -y * ratio + 'px'
                         })
                     })
-
-
-
                     callback && callback(res.id, res.price);
                 }
             });

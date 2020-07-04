@@ -99,7 +99,8 @@
   border: solid 1px #ddd;
   float: left;
   overflow: hidden;
-  position: relative;
+  position: absolute;
+  z-index: 100;
   display: none;
 }
 .bg-g .wrap1190 #product-intro .big.show {
@@ -107,6 +108,8 @@
 }
 .bg-g .wrap1190 #product-intro .big .bigpic {
   position: absolute;
+  width: 800px;
+  height: 800px;
   left: 0px;
   top: 0px;
 }

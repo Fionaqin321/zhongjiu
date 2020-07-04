@@ -84,19 +84,21 @@ define(['jquery', 'cookie'], function($, cookie) {
 
 
         render: function() {
-            let loginObj = JSON.parse(cookie.get('login')); //从cookie中获取登录状态
-            // console.log(loginObj && loginObj.isLogin);
             // 登录之后实现首页头部信息联动
-            if (loginObj && loginObj.isLogin) {
-                $('.login-regin>li').first().addClass('show').siblings().removeClass('show');
-                $('.login-regin>li').first().children('.userName').text(loginObj.userName);
+            if (cookie.get('login')) {
+                let loginObj = JSON.parse(cookie.get('login')); //从cookie中获取登录状态
+                // console.log(loginObj && loginObj.isLogin);
+                if (loginObj && loginObj.isLogin) {
+                    $('.login-regin>li').first().addClass('show').siblings().removeClass('show');
+                    $('.login-regin>li').first().children('.userName').text(loginObj.userName);
+                }
+                // 退出登录
+                $('.log_out').on('click', function() {
+                    // 点击“退出”，修改cookie中的登录状态
+                    loginObj.isLogin = false;
+                    cookie.set('login', JSON.stringify(loginObj), 7);
+                })
             }
-            // 退出登录
-            $('.log_out').on('click', function() {
-                // 清空cookie里存的登录状态
-                cookie.remove('login', '', -1);
-                $('.login-regin>li').first().removeClass('show').siblings().addClass('show');
-            })
 
             $.ajax({
                 type: "get",
