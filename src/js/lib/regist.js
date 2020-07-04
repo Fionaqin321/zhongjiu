@@ -1,8 +1,9 @@
+let baseUrl = "http://localhost/zhongjiu"; //基础路径（必须是绝对路径）
 define(['jquery'], function($) {
     return {
         render: function() {
             var reg = {
-                "regName": /^[A-z]{5,15}/,
+                "regName": /^[A-z]{6,16}/,
                 "cellPhone": /^1[35789]\d{9}$/,
                 "pwd": /^.{6,16}$/
             }
@@ -23,7 +24,6 @@ define(['jquery'], function($) {
                         $(item).parent().find('.info').addClass('show');
                         $(item).parent().find('.success').removeClass('show');
                     }
-                    // console.log(item.dataset.pass);
                 })
             })
 
@@ -68,21 +68,34 @@ define(['jquery'], function($) {
                 }
             })
 
-
-
-            // 提交按钮
             $('.btn-regist').on('click', function() {
-                check();
-            })
-
-            function check() {
-                // 用户协议
-                var allPass = document.querySelectorAll('.form input[data-pass="true"]');
-                console.log(allPass);
-                if (allPass.length === 6) {
-                    $('.btn-regist').removeAttr('disabled');
+                let allPass = document.querySelectorAll('.form input[data-pass="true"]');
+                // console.log(allPass.length);
+                if (!$('.checkbox').is(':checked')) {
+                    $('#checkAgreement_info').addClass('show');
+                    return;
                 }
-            }
+                if (allPass.length === 6) {
+                    $.ajax({
+                        type: "post",
+                        url: `${baseUrl}/interface/regist.php`,
+                        data: {
+                            username: $('#regName').val(),
+                            phone: $('#cellPhone').val(),
+                            passWord: $('#pwd').val()
+                        },
+                        dataType: "json",
+                        success: function(res) {
+                            console.log(res.status);
+                            if (res.status) {
+                                location.href = `${baseUrl}/src/html/login.html`;
+                            } else {
+                                alert(res.msg);
+                            }
+                        }
+                    });
+                }
+            })
         }
     }
 })
