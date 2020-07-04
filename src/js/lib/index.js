@@ -12,6 +12,55 @@ let len2 = $('.scroll-brand').length;
 
 define(['jquery', 'cookie'], function($, cookie) {
     return {
+        floor: function() {
+            // console.log($(".floor-list>li:not('.last')"));
+            $(".floor-list>li:not('.last')").hover(function() {
+                $(this).addClass('hover');
+            }, function() {
+                $(this).removeClass('hover');
+            });
+
+            // 点击左边的li
+            $(".floor-list>li:not('.last')").on('click', function() {
+                    $('.floor-list>li>span').removeClass('active');
+                    $(this).find('span').addClass('active');
+                    // 获取当前点击的li的index
+                    let _index = $(this).index();
+                    // 获取和当前li相对应的内容块在可视窗口下的位置
+                    var top = $('.floors').eq(_index).offset().top;
+                    // console.log(top);
+
+                    $('html,body').animate({
+                        scrollTop: top
+                    }, 500)
+                })
+                // 浏览器窗口滚动
+            $(window).scroll(function() {
+                var $top = $(document).scrollTop(); // 当前文档距离顶部的高度
+                var firstFloorTop = $('.floors').eq(0).offset().top;
+                // console.log(firstFloorTop);
+                if ($top > firstFloorTop) {
+                    $('.floor-list').fadeIn();
+                } else {
+                    $('.floor-list').fadeOut();
+                }
+
+                let i = Math.round(($top - firstFloorTop) / 732);
+                // document.title = $top + '--' + i;
+                $('.floor-list>li>span').removeClass('active');
+                $('.floor-list>li>span:eq(' + i + ')').addClass('active');
+            })
+
+            // 回到顶部
+            $('.floor-list>li.last').on('click', function() {
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 0)
+            })
+
+        },
+
+
         tab: function() {
             $('.tabs1>li').hover(function() {
                 let _index = $(this).index();

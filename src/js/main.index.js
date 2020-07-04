@@ -7,6 +7,7 @@ requirejs.config({
 });
 
 require(["index"], function(index) {
+    index.floor();
     index.tab();
     index.tabs2();
     index.slide();
