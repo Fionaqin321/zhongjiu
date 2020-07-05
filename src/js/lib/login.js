@@ -1,6 +1,23 @@
 let baseUrl = "http://localhost/zhongjiu"; //基础路径（必须是绝对路径）
 define(['jquery', 'cookie'], function($, cookie) {
     return {
+        tab: function() {
+            console.log('1111111');
+            $('.tab_tit>li').each((index, item) => {
+                $(item).on('click', function() {
+                    // console.log(this);
+                    let _index = $(this).index();
+                    $(this).addClass('active').siblings().removeClass('active');
+                    if (_index) {
+                        $('.saom_content').css('display', 'none');
+                        $('.loginMethodByCode').css('display', 'block');
+                    } else {
+                        $('.saom_content').css('display', 'block');
+                        $('.loginMethodByCode').css('display', 'none');
+                    }
+                })
+            })
+        },
         render: function() {
             $('#loginsubmit').on('click', function() {
                 let userName = $('#loginname').val(); // 用户名
