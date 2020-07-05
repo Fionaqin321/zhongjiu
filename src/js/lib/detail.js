@@ -289,10 +289,10 @@ define(['jquery', 'cookie'], function($, cookie) {
             })
 
             // 二级导航菜单显示、隐藏
-            $('.cate-all').hover(function() {
-                $('.mc').css('display', 'block');
+            $('.categorys').hover(function() {
+                $('.category').css('display', 'block');
             }, function() {
-                $('.mc').css('display', 'none');
+                $('.category').css('display', 'none');
             })
         }
     };

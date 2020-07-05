@@ -113,11 +113,11 @@
   top: 0px;
   left: 0px;
   width: 200px;
-  height: 37px;
   background-color: yellow;
 }
 .nav-bar .nav-content .categorys .cate-all {
   font-size: 16px;
+  height: 37px;
   line-height: 37px;
   background-color: #d2041f;
 }
@@ -127,6 +127,10 @@
   padding-left: 31px;
   text-decoration: none;
   color: #fff;
+}
+.nav-bar .nav-content .categorys .category {
+  width: 200px;
+  height: 491px;
 }
 .nav-bar .nav-content .categorys .category .mc {
   position: absolute;
@@ -142,6 +146,9 @@
   width: 200px;
   height: 80px;
   border-bottom: solid 1px #323b42;
+}
+.nav-bar .nav-content .categorys .category .mc .item:hover {
+  background-color: #353c43;
 }
 .nav-bar .nav-content .categorys .category .mc .item:hover .category-details {
   display: block;
@@ -178,6 +185,11 @@
   color: #fff;
   font-size: 13px;
   padding: 3px 4px;
+}
+.nav-bar .nav-content .categorys .category .mc .item > span p a.active {
+  color: #323b42;
+  background: #FFFFFF;
+  border-radius: 2px;
 }
 .nav-bar .nav-content .categorys .category .mc .item .category-details {
   display: none;

@@ -116,10 +116,10 @@
       top: 0px;
       left: 0px;
       width: 200px;
-      height: 37px;
       background-color: yellow;
       .cate-all{
         font-size: 16px;
+        height: 37px;
         line-height: 37px;
         background-color: #d2041f;
         a{
@@ -131,6 +131,8 @@
         }
       }
       .category{
+        width: 200px;
+        height: 491px;
         .mc{
           position: absolute;
           top: 37px;
@@ -145,6 +147,7 @@
             height: 80px;
             border-bottom: solid 1px #323b42;
             &:hover{
+              background-color: rgb(53, 60, 67);
               .category-details{
                 display: block;
               }
@@ -181,6 +184,11 @@
                   color: #fff;
                   font-size: 13px;
                   padding: 3px 4px;
+                  &.active{
+                    color: #323b42;
+                    background: #FFFFFF;
+                    border-radius: 2px;
+                  }
                 }
               }
             }
