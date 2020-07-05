@@ -287,6 +287,13 @@ define(['jquery', 'cookie'], function($, cookie) {
                     location.href = 'http://localhost/zhongjiu/src/html/shopcar.html';
                 }
             })
+
+            // 二级导航菜单显示、隐藏
+            $('.cate-all').hover(function() {
+                $('.mc').css('display', 'block');
+            }, function() {
+                $('.mc').css('display', 'none');
+            })
         }
     };
 });
