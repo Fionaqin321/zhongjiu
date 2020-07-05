@@ -7,5 +7,6 @@ require.config({
 });
 
 require(['shopcar'], function(shopcar) {
+    shopcar.init();
     shopcar.render();
 });

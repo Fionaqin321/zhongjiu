@@ -7,10 +7,11 @@ requirejs.config({
 });
 
 require(["index"], function(index) {
+    index.init();
+    index.render();
     index.floor();
     index.tab();
     index.tabs2();
     index.slide();
     index.slide2();
-    index.render();
 });

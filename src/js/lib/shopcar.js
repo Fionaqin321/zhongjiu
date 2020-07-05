@@ -4,6 +4,18 @@ let total = 0; // 商品总价
 
 define(['jquery', 'cookie'], function($, cookie) {
     return {
+        init: function() {
+            if (cookie.get('shop')) {
+                let shopObj = JSON.parse(cookie.get('shop'));
+                console.log(shopObj);
+                shopObj.forEach((item, index) => {
+                    totalNum += parseInt(item.num);
+                    total = parseInt(item.num) * parseInt(item.price);
+                })
+                $('.totalNum').html(totalNum);
+                $('.totalCount').text(total.toFixed(2));
+            }
+        },
         render: function() {
             // 获取cookie数据
             let shop = cookie.get('shop');

@@ -7,6 +7,8 @@ require.config({
 });
 
 require(['jquery', 'detail'], function($, detail) {
+    detail.init();
+
     // 当页面渲染完成才能获取元素——回调函数（改变代码执行顺序）
     detail.render(function(id, price) {
         $('.btn-append').on('click', function() {

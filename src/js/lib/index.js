@@ -7,11 +7,61 @@ let len = $('.scroll-A').length; // div的个数
 let curIndex = 0;
 $('.scroll-wrap').append($('.scroll-brand').first().clone()); // 克隆第一个div 并追加到容器的尾部
 let len2 = $('.scroll-brand').length;
-// console.log(len2);
 
 
 define(['jquery', 'cookie'], function($, cookie) {
     return {
+        init: function() {
+            // 登录之后实现首页头部信息联动
+            if (cookie.get('login')) {
+                let loginObj = JSON.parse(cookie.get('login')); //从cookie中获取登录状态
+                // console.log(loginObj && loginObj.isLogin);
+                if (loginObj && loginObj.isLogin) {
+                    $('.login-regin>li').first().addClass('show').siblings().removeClass('show');
+                    $('.login-regin>li').first().children('.userName').text(loginObj.userName);
+                }
+                // 退出登录
+                $('.log_out').on('click', function() {
+                    // 点击“退出”，修改cookie中的登录状态
+                    loginObj.isLogin = false;
+                    cookie.set('login', JSON.stringify(loginObj), 7);
+                    location.reload();
+                })
+            }
+            // 右侧购物车入口商品数量 
+            if (cookie.get('shop')) {
+                let shop = JSON.parse(cookie.get('shop'));
+                let productNum = 0;
+                shop.forEach((item, index) => {
+                        // console.log(item);
+                        productNum += parseInt(item.num);
+                    })
+                    // console.log(productNum);
+                $('.product-num').text(productNum);
+            }
+            // 进入购物车页面权限判断
+            $('.right-side').on('click', function() {
+                if (!cookie.get('login')) {
+                    // console.log('afsdfas');
+                    alert('请先登录');
+                    location.href = 'http://localhost/zhongjiu/src/html/login.html';
+                } else {
+                    let loginObj = JSON.parse(cookie.get('login'));
+                    let isLogin = loginObj.isLogin;
+                    if (!isLogin) {
+                        alert('请先登录');
+                        location.href = 'http://localhost/zhongjiu/src/html/login.html';
+                        return;
+                    }
+                    location.href = 'http://localhost/zhongjiu/src/html/shopcar.html';
+                }
+            })
+
+        },
+
+        // 
+
+        // 楼梯效果
         floor: function() {
             // console.log($(".floor-list>li:not('.last')"));
             $(".floor-list>li:not('.last')").hover(function() {
@@ -131,30 +181,13 @@ define(['jquery', 'cookie'], function($, cookie) {
             });
         },
 
-
+        // 页面渲染
         render: function() {
-            // 登录之后实现首页头部信息联动
-            if (cookie.get('login')) {
-                let loginObj = JSON.parse(cookie.get('login')); //从cookie中获取登录状态
-                // console.log(loginObj && loginObj.isLogin);
-                if (loginObj && loginObj.isLogin) {
-                    $('.login-regin>li').first().addClass('show').siblings().removeClass('show');
-                    $('.login-regin>li').first().children('.userName').text(loginObj.userName);
-                }
-                // 退出登录
-                $('.log_out').on('click', function() {
-                    // 点击“退出”，修改cookie中的登录状态
-                    loginObj.isLogin = false;
-                    cookie.set('login', JSON.stringify(loginObj), 7);
-                })
-            }
-
             $.ajax({
                 type: "get",
                 url: `${baseUrl}/interface/getall.php`,
                 dataType: "json",
                 success: function(res) {
-                    // console.log(res);
                     let temL = '';
                     res.forEach(elm => {
                         temL += `<li>

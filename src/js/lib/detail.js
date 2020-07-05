@@ -150,7 +150,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                                 </a>
                             </div>
                             <div id="choose-btn-append" class="btn">
-                                <a class = "btn-append" id = "InitCartUrl" style = "margin-left:40px;" href="${baseUrl}/src/html/shopcar.html">
+                                <a class = "btn-append" id = "InitCartUrl" style = "margin-left:40px;">
                                     <img src="../images/gou.png">加入购物车
                                 </a>
                             </div>
@@ -256,6 +256,37 @@ define(['jquery', 'cookie'], function($, cookie) {
                 console.log(shop);
             }
             cookie.set('shop', JSON.stringify(shop), 7);
+            location.reload();
+        },
+        init: function() {
+            // 右侧购物车入口商品数量 
+            if (cookie.get('shop')) {
+                let shop = JSON.parse(cookie.get('shop'));
+                let productNum = 0;
+                shop.forEach((item, index) => {
+                        // console.log(item);
+                        productNum += parseInt(item.num);
+                    })
+                    // console.log(productNum);
+                $('.product-num').text(productNum);
+            }
+            // 进入购物车页面权限判断
+            $('.right-side').on('click', function() {
+                if (!cookie.get('login')) {
+                    // console.log('afsdfas');
+                    alert('请先登录');
+                    location.href = 'http://localhost/zhongjiu/src/html/login.html';
+                } else {
+                    let loginObj = JSON.parse(cookie.get('login'));
+                    let isLogin = loginObj.isLogin;
+                    if (!isLogin) {
+                        alert('请先登录');
+                        location.href = 'http://localhost/zhongjiu/src/html/login.html';
+                        return;
+                    }
+                    location.href = 'http://localhost/zhongjiu/src/html/shopcar.html';
+                }
+            })
         }
     };
 });
