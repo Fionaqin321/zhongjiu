@@ -51,7 +51,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                                     userName: userName
                                 }
                                 cookie.set('login', JSON.stringify(loginObj), 7)
-                                location.href = 'http://localhost/zhongjiu/src/html/index.html';
+                                    // location.href = 'http://localhost/zhongjiu/src/html/index.html';
                             } else { // 用户登录失败
                                 $('.tips_error').addClass('show');
                                 $('#checkCode_error').text(res.msg);

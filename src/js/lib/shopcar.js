@@ -55,7 +55,11 @@ define(['jquery', 'cookie'], function($, cookie) {
                                 </div>
                                 
                                 <div class="price">￥<span>${elm.price}<span></div>
-                                <div class="num" >x <span>${arr[0].num}<span></div>
+                                <div class="num">
+                                    <a class="btn-reduce" href="javascript:;">-</a>
+                                    <input class="text quantity-text" value="${arr[0].num}" min="1">
+                                    <a class="btn-add" href="javascript:;">+</a>
+                                </div>
                                 <div> <input type = "button" value = "删除" class="btn-delete" data-id="${elm.id}"> </div>
                               </li>`
                         });
