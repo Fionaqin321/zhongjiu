@@ -2,7 +2,6 @@ let baseUrl = "http://localhost/zhongjiu"; //基础路径（必须是绝对路�
 define(['jquery', 'cookie'], function($, cookie) {
     return {
         tab: function() {
-            console.log('1111111');
             $('.tab_tit>li').each((index, item) => {
                 $(item).on('click', function() {
                     // console.log(this);
@@ -43,7 +42,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                         },
                         dataType: "json",
                         success: function(res) {
-                            console.log(res.isLogin);
+                            // console.log(res.isLogin);
                             if (res.isLogin) { // 如果用户登录成功
                                 $('.tips_error').removeClass('show');
                                 let loginObj = {
@@ -51,7 +50,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                                     userName: userName
                                 }
                                 cookie.set('login', JSON.stringify(loginObj), 7)
-                                    // location.href = 'http://localhost/zhongjiu/src/html/index.html';
+                                location.href = 'http://localhost/zhongjiu/src/html/index.html';
                             } else { // 用户登录失败
                                 $('.tips_error').addClass('show');
                                 $('#checkCode_error').text(res.msg);

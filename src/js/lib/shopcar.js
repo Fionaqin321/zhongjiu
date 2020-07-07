@@ -7,7 +7,7 @@ define(['jquery', 'cookie'], function($, cookie) {
         init: function() {
             if (cookie.get('shop')) {
                 let shopObj = JSON.parse(cookie.get('shop'));
-                console.log(shopObj);
+                // console.log(shopObj);
                 shopObj.forEach((item, index) => {
                     totalNum += parseInt(item.num);
                     total = parseInt(item.num) * parseInt(item.price);
@@ -57,7 +57,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                                 <div class="price">￥<span>${elm.price}<span></div>
                                 <div class="num">
                                     <a class="btn-reduce" href="javascript:;">-</a>
-                                    <input class="text quantity-text" value="${arr[0].num}" min="1">
+                                    <input class="text quantity-text" value="${arr[0].num}" data-id="${elm.id}" max="${elm.num}">
                                     <a class="btn-add" href="javascript:;">+</a>
                                 </div>
                                 <div> <input type = "button" value = "删除" class="btn-delete" data-id="${elm.id}"> </div>
@@ -81,6 +81,43 @@ define(['jquery', 'cookie'], function($, cookie) {
                                 }
                             });
                         });
+
+                        // 点击”-“
+                        $('.pro-list').on('click', '.btn-reduce', function() {
+                            let shop = JSON.parse(cookie.get('shop'));
+                            let num = $(this).next().val();
+                            num--;
+                            if (num <= 1) {
+                                num = 1;
+                            }
+                            $(this).next().val(num);
+                            let curId = $(this).next()[0].dataset.id;
+                            shop.map((item, index) => {
+                                if (item.id == curId) {
+                                    item.num = num;
+                                }
+                            })
+                            cookie.set('shop', JSON.stringify(shop), 7);
+                        })
+
+                        // 点击”+“
+                        $('.pro-list').on('click', '.btn-add', function() {
+                            let shop = JSON.parse(cookie.get('shop'));
+                            let num = $(this).prev().val();
+                            num++;
+                            if (num >= $(this).prev()[0].max) {
+                                num = $(this).prev()[0].max;
+                            }
+                            $(this).prev().val(num);
+                            let curId = $(this).prev()[0].dataset.id;
+                            shop.map(item => {
+                                // console.log(item.id);
+                                if (item.id === curId) {
+                                    item.num = num;
+                                }
+                            })
+                            cookie.set('shop', JSON.stringify(shop), 7);
+                        })
 
                         // checkbox的操作
                         $('.pro-list').on('click', '.checkBox', function() {

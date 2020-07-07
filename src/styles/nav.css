@@ -53,6 +53,7 @@
   width: 50px;
   list-style: none;
   z-index: 1000;
+  display: none;
 }
 .floor-list > li {
   position: relative;

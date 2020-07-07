@@ -165,8 +165,8 @@ define(['jquery', 'cookie'], function($, cookie) {
                     $('#product-intro').append(temp_productDesc);
 
                     // 数量加减
-                    let num = $('.quantity-text').val();
                     $('.btn-add').on('click', function() {
+                        let num = $('.quantity-text').val();
                         num++;
                         if (num >= res.num) {
                             num = res.num;
@@ -174,6 +174,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                         $('.quantity-text').val(num);
                     })
                     $('.btn-reduce').on('click', function() {
+                        let num = $('.quantity-text').val();
                         num--;
                         if (num <= 1) {
                             num = 1;

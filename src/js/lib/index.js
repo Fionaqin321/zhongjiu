@@ -1,13 +1,4 @@
 let baseUrl = "http://localhost/zhongjiu"; //基础路径（必须是绝对路径）
-let index = 0; // 记录当前div的索引
-$('.brandA-wrap').append($('.scroll-A').first().clone()); // 克隆第一个div 并追加到容器的尾部
-let len = $('.scroll-A').length; // div的个数
-
-// 底部的滑块
-let curIndex = 0;
-$('.scroll-wrap').append($('.scroll-brand').first().clone()); // 克隆第一个div 并追加到容器的尾部
-let len2 = $('.scroll-brand').length;
-
 
 define(['jquery', 'cookie'], function($, cookie) {
     return {
@@ -63,7 +54,6 @@ define(['jquery', 'cookie'], function($, cookie) {
 
         // 楼梯效果
         floor: function() {
-            // console.log($(".floor-list>li:not('.last')"));
             $(".floor-list>li:not('.last')").hover(function() {
                 $(this).addClass('hover');
             }, function() {
@@ -131,6 +121,10 @@ define(['jquery', 'cookie'], function($, cookie) {
 
         // 滑动切换
         slide: function() {
+            let index = 0; // 记录当前div的索引
+            $('.brandA-wrap').append($('.scroll-A').first().clone()); // 克隆第一个div 并追加到容器的尾部
+            let len = $('.scroll-A').length; // div的个数
+
             let speed = '-188'; // 设置移动的距离
             $('.prev').on('click', function() {
                 index++;
@@ -138,8 +132,6 @@ define(['jquery', 'cookie'], function($, cookie) {
                     index = 0;
                 }
                 let left = index * speed;
-                // console.log(index);
-                // console.log(left);
                 $('.brandA-wrap').css('left', left);
             });
 
@@ -149,14 +141,17 @@ define(['jquery', 'cookie'], function($, cookie) {
                     index = len - 1;
                 }
                 let left = index * speed;
-                // console.log(index);
-                // console.log(left);
                 $('.brandA-wrap').css('left', left);
             });
         },
 
         // 滑动切换
         slide2: function() {
+            // 底部的滑块
+            let curIndex = 0;
+            $('.scroll-wrap').append($('.scroll-brand').first().clone()); // 克隆第一个div 并追加到容器的尾部
+            let len2 = $('.scroll-brand').length;
+
             let speed = '-550'; // 设置移动的距离
             $('.bd-prev').on('click', function() {
                 curIndex++;
