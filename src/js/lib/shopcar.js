@@ -4,18 +4,6 @@ let total = 0; // 商品总价
 
 define(['jquery', 'cookie'], function($, cookie) {
     return {
-        init: function() {
-            if (cookie.get('shop')) {
-                let shopObj = JSON.parse(cookie.get('shop'));
-                // console.log(shopObj);
-                shopObj.forEach((item, index) => {
-                    totalNum += parseInt(item.num);
-                    total = parseInt(item.num) * parseInt(item.price);
-                })
-                $('.totalNum').html(totalNum);
-                $('.totalCount').text(total.toFixed(2));
-            }
-        },
         render: function() {
             // 获取cookie数据
             let shop = cookie.get('shop');
@@ -64,14 +52,40 @@ define(['jquery', 'cookie'], function($, cookie) {
                               </li>`
                         });
                         $('.pro-list').append(temp);
+                        $('.pro-list>li input[type="checkbox"]').prop('checked', true);
+                        compute();
 
+                        // 计算总数量和总价
+                        function compute() {
+                            if (cookie.get('shop')) {
+                                let shopObj = JSON.parse(cookie.get('shop'));
+                                totalNum = 0;
+                                total = 0;
+                                let checkedBoxs = $('.pro-list>li input[type="checkbox"]:checked');
+                                if (checkedBoxs.length === shopObj.length) {
+                                    $('#selectAll').prop('checked', true);
+                                } else {
+                                    $('#selectAll').prop('checked', false);
+                                }
+                                let idArr = checkedBoxs.map((index, item) => {
+                                    return item.dataset.id;
+                                });
+                                idArr = Array.from(idArr); //将类数组转化为数组
+                                shopObj.forEach((item, index) => {
+                                    if (idArr.some(elm => elm == item.id)) {
+                                        totalNum += parseInt(item.num);
+                                        total += parseInt(item.num) * parseInt(item.price);
+                                    }
+                                })
+                                $('.totalNum').html(totalNum);
+                                $('.totalCount').text(total.toFixed(2));
+                            }
+                        }
                         // 采用事件委托为未来元素绑定事件
                         // 删除
                         $('.pro-list').on('click', '.btn-delete', function() {
-                            // console.log(this);
                             let shop = JSON.parse(cookie.get('shop'));
                             let id = this.dataset.id;
-
                             shop.forEach((elm, index) => {
                                 if (elm.id === id) {
                                     shop.splice(index, 1);
@@ -81,6 +95,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                                 }
                             });
                         });
+
 
                         // 点击”-“
                         $('.pro-list').on('click', '.btn-reduce', function() {
@@ -98,6 +113,7 @@ define(['jquery', 'cookie'], function($, cookie) {
                                 }
                             })
                             cookie.set('shop', JSON.stringify(shop), 7);
+                            compute();
                         })
 
                         // 点击”+“
@@ -111,47 +127,25 @@ define(['jquery', 'cookie'], function($, cookie) {
                             $(this).prev().val(num);
                             let curId = $(this).prev()[0].dataset.id;
                             shop.map(item => {
-                                // console.log(item.id);
                                 if (item.id === curId) {
                                     item.num = num;
+                                    // console.log(item);
                                 }
                             })
                             cookie.set('shop', JSON.stringify(shop), 7);
+                            compute();
                         })
 
                         // checkbox的操作
                         $('.pro-list').on('click', '.checkBox', function() {
-                            let oCheckBox = $('.pro-list input[type = "checkbox"]:checked'); // 获取ul中所有被选中的checkbox
-                            let checkedLi = []; // 存放ul中所有被选中的li
-
-                            oCheckBox.each((index, item) => {
-                                checkedLi = [];
-                                checkedLi.push($(item).parent());
-                            });
-                            console.log(checkedLi); //获取ul中所有被选中的li
-                            checkedLi.forEach((item, index) => {
-                                    totalNum += Number(item.find('.num>span').text());
-                                    total += (Number(item.find('.num>span').text()) * Number(item.find('.price>span').text()));
-                                })
-                                // console.log(totalNum, total.toFixed(2));
-                            $('.totalNum').html(totalNum);
-                            $('.totalCount').text(total.toFixed(2));
+                            compute();
                         });
 
                         // 全选
-                        $('.selectAll>.checkbox').on('click', function() {
-                            let _checked = $(this).is(':checked'); // 全选按钮的选中状态
-                            $('.pro-list>li input[type="checkbox"]').attr('checked', _checked);
-                            totalNum = 0;
-                            total = 0;
-                            if (_checked) {
-                                $('.pro-list>li').each((index, item) => {
-                                    totalNum += Number($(item).find('.num>span').text());
-                                    total += Number($(item).find('.num>span').text()) * Number($(item).find('.price>span').text());
-                                });
-                            }
-                            $('.totalNum').html(totalNum);
-                            $('.totalCount').text(total.toFixed(2));
+                        $('#selectAll').on('click', function() {
+                            let _checked = $(this).is(':checked'); // 获取全选按钮的选中状态
+                            $('.pro-list>li input[type="checkbox"]').prop('checked', _checked);
+                            compute();
                         });
                     }
                 });

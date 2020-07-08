@@ -100,7 +100,6 @@ define(['jquery', 'cookie'], function($, cookie) {
 
         },
 
-
         tab: function() {
             $('.tabs1>li').hover(function() {
                 let _index = $(this).index();
